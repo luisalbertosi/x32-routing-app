@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0A5BD3" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="X32 Routing" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <title>X32 Routing Pro</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="appbar">
+    <div>
+      <h1>X32 Routing Pro</h1>
+      <p>32-channel routing worksheet for live sound</p>
+    </div>
+    <div class="actions">
+      <button id="newShowBtn">New</button>
+      <button id="duplicateBtn">Duplicate</button>
+      <button id="exportJsonBtn">Export Data</button>
+      <label class="fileBtn">Import Data<input type="file" id="importJson" accept="application/json" /></label>
+      <button id="printBtn" class="primary">Print / Save PDF</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="show-panel">
+      <div class="field wide">
+        <label>Show / Event Name</label>
+        <input id="showName" placeholder="Sunday service, Banda show, conference..." />
+      </div>
+      <div class="field">
+        <label>Date</label>
+        <input id="showDate" type="date" />
+      </div>
+      <div class="field">
+        <label>Venue</label>
+        <input id="venue" placeholder="Venue / church / hall" />
+      </div>
+      <div class="field">
+        <label>Engineer</label>
+        <input id="engineer" placeholder="Name" />
+      </div>
+      <div class="field saved">
+        <label>Saved Worksheets</label>
+        <select id="showSelect"></select>
+      </div>
+    </section>
+
+    <section class="toolbar">
+      <input id="searchBox" placeholder="Search channel, item, notes..." />
+      <button id="clearBtn">Clear 32 Channels</button>
+      <span id="saveStatus">Saved</span>
+    </section>
+
+    <section class="table-wrap">
+      <table id="routingTable">
+        <thead>
+          <tr>
+            <th class="ch">Ch</th>
+            <th>Item</th>
+            <th>Input</th>
+            <th>+48V</th>
+            <th>Pan</th>
+            <th>Color</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <template id="rowTemplate">
+    <tr>
+      <td class="channel"></td>
+      <td><input class="item" placeholder="Kick, Vocal 1, Guitar DI..." /></td>
+      <td>
+        <select class="inputType">
+          <option value="XLR">XLR</option>
+          <option value="Line">Line</option>
+        </select>
+      </td>
+      <td class="center"><input class="phantom" type="checkbox" /></td>
+      <td>
+        <select class="pan">
+          <option value="C">C</option>
+          <option value="L">L</option>
+          <option value="R">R</option>
+        </select>
+      </td>
+      <td><input class="color" type="color" /></td>
+      <td><input class="notes" placeholder="Mic, stand, patch, musician..." /></td>
+    </tr>
+  </template>
+
+  <footer>
+    <strong>Tip:</strong> On iPad, open this in Safari, tap Share, then “Add to Home Screen” to install it like an app.
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
